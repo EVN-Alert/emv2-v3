@@ -94,28 +94,49 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RP-rQ-zC7">
-                                <rect key="frame" x="107" y="302" width="161" height="62"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BH-Vv-T5S">
+                                <rect key="frame" x="100" y="152" width="175" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Manual Refresh"/>
+                                <state key="normal" title="Manual EVR"/>
                                 <connections>
-                                    <action selector="manRef:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwz-kH-2Uv"/>
-                                    <action selector="refreshEvLoc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8JZ-Qj-aXX"/>
+                                    <action selector="evRefresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="osg-dc-ByG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pS7-ij-buW">
+                                <rect key="frame" x="88" y="205" width="198" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Toggle Auto EVR"/>
+                                <connections>
+                                    <action selector="TAR:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xQ6-Jf-p1o"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auto EVR is currently" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sJ-sV-8BK">
+                                <rect key="frame" x="39" y="323" width="161" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l3s-t9-Tpj">
+                                <rect key="frame" x="233" y="318" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="TARView" destination="l3s-t9-Tpj" id="MPH-cC-upn"/>
                         <outlet property="evDistance" destination="bgu-Da-IUW" id="wto-kb-pc1"/>
                         <outlet property="evLatitude" destination="cPL-P1-Gdd" id="x42-zr-Gnp"/>
                         <outlet property="evLongitude" destination="3zZ-cN-Gnx" id="Sc9-Bv-P6D"/>
-                        <outlet property="manRef" destination="2RP-rQ-zC7" id="aNz-Y2-kOy"/>
                         <outlet property="myLatitude" destination="mGG-wf-AYU" id="x9B-Vb-oYN"/>
                         <outlet property="myLongitude" destination="wCh-58-rkR" id="cR5-9B-2gi"/>
-                        <outlet property="refresh" destination="2RP-rQ-zC7" id="fuh-06-43u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

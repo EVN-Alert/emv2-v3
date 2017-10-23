@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import Darwin
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     var latitude: Double?
@@ -23,16 +22,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var evLatitude: UITextField!
     @IBOutlet weak var evLongitude: UITextField!
     @IBOutlet weak var evDistance: UITextField!
-    @IBOutlet weak var refresh: UIButton!
+    @IBOutlet weak var TARView: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTARStatusFalse()
+        TARView.text = String("disabled")
         locationManager.delegate  = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        // Do any additional setup after loading the view, typically from a nib.
         evLoad()
+        // Do any additional setup after loading the view, typically from a nib.
 }
     
+    var TARStatus = false;
+    
+    func setTARStatusFalse() {
+        // Set TAR to false
+        TARStatus = false;
+        print("TAR Status set to false")
+    }
+    
+    func setTARStatusTrue() {
+        // Set TAR to true
+        TARStatus = true;
+        print("TAR Status set to true")
+    }
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             print("GPS allowed.")
@@ -42,6 +57,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
     }
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let myCoordinate = locationManager.location?.coordinate
         altitude = locationManager.location?.altitude
@@ -51,6 +67,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         myLatitude.text = String(latitude!)
         myLongitude.text = String(longitude!)
     }
+    
     func evLoad() {
         super.viewDidLoad()
         fetchURL()
@@ -67,7 +84,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 evLatitude.text = allEvData[2]
                 evLongitude.text = allEvData[3]
                 evDistance.text = "33"
-                print("Refreshed HTTP")
             } catch {
                 // error loading
                 data = "9 A 9.0 9.0"
@@ -81,7 +97,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
 //        data = "2 A 2.0 2.0"
     }
-     
+    
+    @IBAction func evRefresh(_ sender: UIButton) {
+        evLoad()
+        print("Refresh queued")
+    }
+    @IBAction func TAR(_ sender: Any) {
+        if TARStatus == false {
+            setTARStatusTrue()
+        } else {
+            setTARStatusFalse()
+        }
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
