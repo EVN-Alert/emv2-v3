@@ -112,15 +112,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             print("There was an error refreshing EVInfo from source. Please try again!")
         }
     }
+    
     @IBAction func TAR(_ sender: Any) {
         if TARStatus == false {
             setTARStatusTrue()
-        } else {
-            setTARStatusFalse()
+            refreshEvArStatus()
         }
     }
     
     
+    var evArLoop = false
+    
+    func refreshEvArStatus() {
+        if TARStatus == false {
+            evArLoop = false
+            startEvAr()
+            // EVAR will only start when the variable is set to true
+            // EVAR will stop when the startEvAr is called and evArLoop is set to false because whenever the function is called, it checks the status of the variable.
+            // refreshEvArStatus just sets the conditions for startEvAr to run, and ensures variables are not mixed. This function is not necessary but will help with eliminating crossreferencing variables merging.
+        } else {
+            evArLoop = true
+            startEvAr()
+            // EVAR will start because the variable is true AND the function to check the status of it and do appropriate actions is called.
+        }
+    }
+
+    
+    func startEvAr() {
+        var rR = 0
+        while evArLoop == true {
+            fetchURL()
+            if evLocDidRefresh == true {
+                print("EVAR success!")
+                // Private variable
+                rR = rR + 1
+                print(rR)
+            }
+            sleep(6)
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

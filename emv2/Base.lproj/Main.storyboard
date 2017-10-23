@@ -107,7 +107,7 @@
                                 <rect key="frame" x="88" y="205" width="198" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Toggle Auto EVR"/>
+                                <state key="normal" title="Turn on Auto EVR"/>
                                 <connections>
                                     <action selector="TAR:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xQ6-Jf-p1o"/>
                                 </connections>
