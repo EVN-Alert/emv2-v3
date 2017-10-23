@@ -34,17 +34,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
 }
     
-    var TARStatus = false;
+    var TARStatus = false
     
     func setTARStatusFalse() {
         // Set TAR to false
-        TARStatus = false;
+        TARStatus = false
         print("TAR Status set to false")
     }
     
     func setTARStatusTrue() {
         // Set TAR to true
-        TARStatus = true;
+        TARStatus = true
         print("TAR Status set to true")
     }
 
@@ -74,6 +74,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
        // performSelector(inBackground: #selector(fetchURL), with: nil)
     }
     
+    var evLocDidRefresh = false
+    
     @objc func fetchURL() {
         var data = "00 A 0.0 0.0"
         if let url = URL(string: "https://roen.us/wapps/dev/evn/evn.txt") {
@@ -84,6 +86,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 evLatitude.text = allEvData[2]
                 evLongitude.text = allEvData[3]
                 evDistance.text = "33"
+                evLocDidRefresh = true
             } catch {
                 // error loading
                 data = "9 A 9.0 9.0"
@@ -101,6 +104,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func evRefresh(_ sender: UIButton) {
         evLoad()
         print("Refresh queued")
+        sleep(1)
+        if evLocDidRefresh == true {
+            print("Refreshed from source")
+            evLocDidRefresh = false
+        } else {
+            print("There was an error refreshing EVInfo from source. Please try again!")
+        }
     }
     @IBAction func TAR(_ sender: Any) {
         if TARStatus == false {
