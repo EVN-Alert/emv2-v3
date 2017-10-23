@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Darwin
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     var latitude: Double?
@@ -22,15 +23,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var evLatitude: UITextField!
     @IBOutlet weak var evLongitude: UITextField!
     @IBOutlet weak var evDistance: UITextField!
+    @IBOutlet weak var refresh: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate  = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        evLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        evLoad()
 }
-
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             print("GPS allowed.")
@@ -40,7 +42,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
     }
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let myCoordinate = locationManager.location?.coordinate
         altitude = locationManager.location?.altitude
@@ -50,7 +51,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         myLatitude.text = String(latitude!)
         myLongitude.text = String(longitude!)
     }
-    
     func evLoad() {
         super.viewDidLoad()
         fetchURL()
@@ -67,6 +67,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 evLatitude.text = allEvData[2]
                 evLongitude.text = allEvData[3]
                 evDistance.text = "33"
+                print("Refreshed HTTP")
             } catch {
                 // error loading
                 data = "9 A 9.0 9.0"

@@ -94,6 +94,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RP-rQ-zC7">
+                                <rect key="frame" x="107" y="302" width="161" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Manual Refresh"/>
+                                <connections>
+                                    <action selector="manRef:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwz-kH-2Uv"/>
+                                    <action selector="refreshEvLoc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8JZ-Qj-aXX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -102,8 +112,10 @@
                         <outlet property="evDistance" destination="bgu-Da-IUW" id="wto-kb-pc1"/>
                         <outlet property="evLatitude" destination="cPL-P1-Gdd" id="x42-zr-Gnp"/>
                         <outlet property="evLongitude" destination="3zZ-cN-Gnx" id="Sc9-Bv-P6D"/>
+                        <outlet property="manRef" destination="2RP-rQ-zC7" id="aNz-Y2-kOy"/>
                         <outlet property="myLatitude" destination="mGG-wf-AYU" id="x9B-Vb-oYN"/>
                         <outlet property="myLongitude" destination="wCh-58-rkR" id="cR5-9B-2gi"/>
+                        <outlet property="refresh" destination="2RP-rQ-zC7" id="fuh-06-43u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
