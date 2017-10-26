@@ -145,7 +145,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if evLocDidRefresh == true {
                 print("EVAR success!")
                 // Private variable
-                rR = rR + 1
+                rR = rR++
                 print(rR)
             }
             sleep(6)
